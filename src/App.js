@@ -8,7 +8,7 @@ import Portfolio from "./components/Portfolio/Portfolio";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { themeContext } from "./Context";
 function App() {
   const theme = useContext(themeContext);
@@ -21,15 +21,18 @@ function App() {
         color: darkMode ? "white" : "",
       }}
     >
-      <Navbar />
-      <Intro />
-      <Services />
-      <Experience />
-      <Works />
-      <Portfolio />
-      <Testimonial />
-      <Contact />
-      <Footer />
+      <Suspense fallback={"loading..."}>
+        <Navbar />
+        <Intro />
+        <Services />
+        <Experience />
+        <Works />
+        <Portfolio />
+        <Testimonial />
+        <Contact />
+        <Footer />
+      </Suspense>
+
     </div>
   );
 }
